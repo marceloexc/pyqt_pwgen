@@ -17,23 +17,25 @@ class MainWindow(QtWidgets.QMainWindow):
             'special': string.punctuation
         } #remove this 
         print(self.checkBox.isChecked())
-        self.variationList = []
 
 
     def changeLength(self):
+        self.variationList = []
         self.label_6.clear()
         self.label_6.setText(str(self.horizontalSlider.value()))
         self.amount = self.horizontalSlider.value()
         self.pw = ''
         if self.checkBox.isChecked():
             self.variationList.append(string.ascii_uppercase)
-            print('lower')
         if self.checkBox_2.isChecked():
             self.variationList.append(string.ascii_lowercase)
-            print('upper')
+        if self.checkBox_3.isChecked():
+            self.variationList.append(string.digits)
+        if self.checkBox_4.isChecked():
+            self.variationList.append(string.punctuation)
         for i in range(self.amount):
-            key=random.choice(list(self.dict))
-            self.pw += str(random.choice(self.dict[key]))
+            key=random.choice(self.variationList)
+            self.pw += str(random.choice(key))
         self.plainTextEdit.clear()
         self.plainTextEdit.setPlainText(self.pw)
 
