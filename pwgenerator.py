@@ -17,7 +17,7 @@ class MainWindow(QtWidgets.QMainWindow):
             'special': string.punctuation
         } #remove this 
         print(self.checkBox.isChecked())
-        variationList = []
+        self.variationList = []
 
 
     def changeLength(self):
@@ -26,7 +26,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.amount = self.horizontalSlider.value()
         self.pw = ''
         if self.checkBox.isChecked():
-            variationList.append(string.ascii_lowercase)
+            self.variationList.append(string.ascii_uppercase)
+            print('lower')
+        if self.checkBox_2.isChecked():
+            self.variationList.append(string.ascii_lowercase)
+            print('upper')
         for i in range(self.amount):
             key=random.choice(list(self.dict))
             self.pw += str(random.choice(self.dict[key]))
